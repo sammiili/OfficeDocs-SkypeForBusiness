@@ -146,8 +146,10 @@ After Windows is installed, the Microsoft Teams Rooms console app will go into i
 3. Under "Configure Domain," set the FQDN for the Skype for Business Server. If the Skype for Business SIP domain is different from the Exchange domain of the user, enter the Exchange domain in this field.
     
 4. Click **Next**.
+
+5. Cortana Voice Activation is enabled by default. The toggle can be turned off. By keeping the toggle on, the device can listen for the wake word 'Cortana' when users want to use voice assistance. This feature is available on Cortana-certified audio devices for certain languages. [Learn more.] (https://docs.microsoft.com/en-us/microsoftteams/cortana-in-teams).
     
-5. Select the indicated devices on the Features screen and click **Next**. The default is to have Auto Screen sharing set to On and Hide meeting names set to Off. The devices to select are:
+6. Select the indicated devices on the Features screen and click **Next**. The default is to have Auto Screen sharing set to On and Hide meeting names set to Off. The devices to select are:
     
    - Microphone for Conferencing: the default microphone for this conference room.
     
@@ -156,8 +158,8 @@ After Windows is installed, the Microsoft Teams Rooms console app will go into i
    - Default Speaker: the speaker used for audio from the HDMI ingest.
     
      Each item has a drop-down menu of options to select from. You must make a selection for each device.
-    
-6. Click **Finish**.
+     
+7. Click **Finish**.
     
 The Microsoft Teams Rooms console app should immediately start signing in to Skype for Business Server with the credentials entered above, and should also begin syncing its calendar with Exchange using those same credentials. For details on using the console app, refer to the [Microsoft Teams Rooms help](https://support.office.com/article/Skype-Room-Systems-version-2-help-e667f40e-5aab-40c1-bd68-611fe0002ba2).
   
