@@ -86,6 +86,17 @@ Direct Routing requires the user to be homed online. You can check by looking at
 
 After you've created the user and assigned a license, you must configure the user's online phone settings. The configuration of Cloud Voicemail for the user is automatic; no other configuration needs to be done.
 
+### Upload Direct Routing numbers to your tenant
+
+Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory is optional. If you upload phone numbers to Microsoft's telephone number management inventory, the numbers are in scope when using the PowerShell command [Get-CsPhoneNumberAssignment](https://learn.microsoft.com/en-us/powershell/module/teams/get-csphonenumberassignment), and also viewable in Teams admin center > Phone Numbers.
+
+To upload Direct Routing telephone numbers to Microsoft's telephone number management inventory, see the following PowerShell command: [New-CsOnlineDirectRoutingTelephoneNumberUploadOrder](/powershell/module/teams/new-csonlinedirectroutingtelephonenumberuploadorder).
+
+Uploading the numbers is an asynchronous operation. To see the status of your upload order, see the following PowerShell command: [Get-CsOnlineTelephoneNumberOrder](https://learn.microsoft.com/en-us/powershell/module/teams/get-csonlinetelephonenumberorder).
+
+> [!NOTE]
+> Whenever porting Direct Routing numbers, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and prior to your number port event, use the PowerShell command [New-CsOnlineTelephoneNumberReleaseOrder](https://learn.microsoft.com/en-us/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the DR numbers available for porting.
+
 You can configure the phone number by using the Teams admin center or by using Teams PowerShell.
 
 ### Use Teams admin center
@@ -103,7 +114,6 @@ You can configure the phone number by using the Teams admin center or by using T
 5. Select **Apply.**
 
 The account general information will now show the assigned phone number and Direct Routing as the phone number type.
-
 
 ### Use PowerShell
 
@@ -140,7 +150,6 @@ The account general information will now show the assigned phone number and Dire
     ```PowerShell
     Invite: <sip:+14255388701;ext=1001@sbc1.adatum.biz
     ```
-
 
 ## Configure sending calls directly to voicemail
 
