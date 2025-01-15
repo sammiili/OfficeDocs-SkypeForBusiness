@@ -27,13 +27,15 @@ ms.custom:
 description: Learn how to see a list of all telephone numbers in your organization and all numbers that are assigned to users or unassigned.
 ---
 
-# See a list of telephone numbers 
+# See a list of telephone numbers in your organization
 
-There are different types of telephone numbers that you can assign to users or voice applications like [Audio Conferencing](deploy-audio-conferencing-teams-landing-page.md) or [Call Queues](plan-auto-attendant-call-queue.md). For more information, see [Manage telephone numbers for your organization](/microsoftteams/manage-phone-numbers-landing-page).
+This article is for Teams admins who are managing telephone numbers for their organization's tenant.
 
-This article applies to Calling Plans, Operator Connect, and Teams Phone Mobile. For information about Direct Routing, see [Configure the telephone number and enable enterprise voice](direct-routing-enable-users.md#configure-the-phone-number-and-enable-enterprise-voice).
-  
-## To see telephone numbers in your organization
+In Teams, the numbers that you've associated with your tenant are stored in Microsoft's telephone number management inventory, reserved only for your tenant's use. You can see these numbers at any time.
+
+You can see all telephone numbers that you've acquired through any and all Public Switched Telephone Network (PSTN) service providers connected to your tenant. This includes both numbers assigned to users and unassigned numbers that you've acquired and have reserved for use in your tenant.
+
+To have your unassigned Direct Routing telephone numbers included in this view, you must upload them to Microsoft's telephone number management inventory. See [Upload Direct Routing numbers to your tenant](direct-routing-enable-users.md#upload-direct-routing-numbers-to-your-tenant) for more information.
 
 To see the telephone numbers in your organization:
 
@@ -58,8 +60,6 @@ To see the telephone numbers in your organization:
    - Number **activation state**.
    - Number **type**.
    - Phone number **status**.
-
-
 
 ## To see the activation status for number assignments
 
@@ -87,15 +87,17 @@ To see a list of all telephone numbers that you have for your organization, use 
 Get-CsPhoneNumberAssignment | ft TelephoneNumber,ActivationState,NumberType
 ```
 
+> [!IMPORTANT]
+> By default, the [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) cmdlet returns the first 500 results.
+
+Another way of getting all telephone numbers that you have for your organization is to use the [Export-CsAcquiredPhoneNumber](/powershell/module/teams/export-csacquiredphonenumber) PowerShell cmdlet.
+
 To see all of the telephone numbers that are assigned to users, use the [Get-CsOnlineUser](/powershell/module/teams/get-csonlineuser) cmdlet. For example, to see all users with a telephone number assigned, run the following command:
 
 ```PowerShell
 Get-CsOnlineUser | Where-Object  { $_.LineURI -notlike $null } | ft DisplayName,UserPrincipalName,LineURI
 ```
 
-> [!IMPORTANT]
-> By default, the [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) cmdlet returns the first 500 results.
-    
 ## Related topics
 
 [Manage telephone numbers for your organization](manage-phone-numbers-landing-page.md)
