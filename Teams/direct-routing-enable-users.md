@@ -23,7 +23,7 @@ description: "Learn how to enable users for Microsoft Teams Phone Direct Routing
 
 # Enable users for Direct Routing
 
-This article describes how to enable users for Direct Routing. This is step 2 of the following steps for configuring Direct Routing:
+This article describes how to enable users for Direct Routing and is step 2 of the following steps for configuring Direct Routing:
 
 - Step 1. [Connect the SBC with Phone System and validate the connection](direct-routing-connect-the-sbc.md) 
 - **Step 2. Enable users for Direct Routing**   (this article)
@@ -35,17 +35,18 @@ For information on all the steps required for setting up Direct Routing, see [Co
 
 When you're ready to enable users for Direct Routing, follow these steps: 
 
-1. Create a user in Microsoft 365 and assign a Teams Phone license.  
-2. Ensure that the user is homed online.
-3. Configure the phone number and enable enterprise voice. 
-4. Assign Teams Only mode to users.
+1. [Create a user in Microsoft 365 and assign a Teams Phone license](#create-a-user-and-assign-the-license)
+1. [Ensure that the user is homed online](#ensure-that-the-user-is-homed-online)
+1. [Configure the phone number and enable enterprise voice](#configure-the-phone-number-and-enable-enterprise voice)
+1. [Configure sending calls directly to voicemail](#configure-sending-calls-directly-to-voicemail)
+1. [Assign Teams Only mode to users](#assign-teams-only-mode-to-users-to-ensure-calls-land-in-microsoft-teams)
 
 ## Create a user and assign the license
 
-There are two options for creating a new user in Microsoft 365. However, Microsoft recommends that your organization choose one option to avoid routing issues: 
+There are two options for creating a new user in Microsoft 365. However, we recommend that your organization chooses only one option to avoid routing issues: 
 
-- Create the user in on-premises Active Directory and sync the user to the cloud. See [Integrate your on-premises directories with Microsoft Entra ID](/azure/active-directory/connect/active-directory-aadconnect).
-- Create the user directly in the Microsoft 365 admin center. See [Add users individually or in bulk to Microsoft 365 or Office 365 - Admin Help](https://support.office.com/article/Add-users-individually-or-in-bulk-to-Office-365-Admin-Help-1970f7d6-03b5-442f-b385-5880b9c256ec). 
+- Create the user in on-premises Active Directory and sync the user to the cloud. For more information, see [Integrate your on-premises directories with Microsoft Entra ID](/azure/active-directory/connect/active-directory-aadconnect).
+- Create the user directly in the Microsoft 365 admin center. For more information, see [Add users individually or in bulk to Microsoft 365 or Office 365 - Admin Help](https://support.office.com/article/1970f7d6-03b5-442f-b385-5880b9c256ec). 
 
 For information about license requirements, see [licensing and other requirements](direct-routing-plan.md#licensing-and-other-requirements) in [Plan Direct Routing](direct-routing-plan.md).
 
@@ -70,9 +71,9 @@ Direct Routing requires the user to be homed online. You can check by looking at
    Set-CsUser -Identity "<User name>" -LineUri $null
     ``` 
  > [!NOTE]
- > Do not set EnterpriseVoiceEnabled to False as there is no requirement to do so and this can lead to dial plan normalization issues if legacy Skype for Business phones are in use and the Tenant hybrid configuration is set with UseOnPremDialPlan $True. 
+ > Don't set EnterpriseVoiceEnabled to False as there's no requirement to do so and this can lead to dial plan normalization issues if legacy Skype for Business phones are in use and the Tenant hybrid configuration is set with UseOnPremDialPlan $True. 
     
-   After the changes have synced to Microsoft 365, the expected output of `Get-CsOnlineUser -Identity "<User name>" | fl RegistrarPool,OnPremLineUri,LineUri` is:
+   After the changes sync to Microsoft 365, the expected output of `Get-CsOnlineUser -Identity "<User name>" | fl RegistrarPool,OnPremLineUri,LineUri` is:
 
    ```console
    RegistrarPool                        : pool.infra.lync.com
@@ -80,36 +81,36 @@ Direct Routing requires the user to be homed online. You can check by looking at
    LineURI                              : 
    ```
  > [!NOTE]
- > All user's phone attributes must be managed online before you [decomission your on-premises Skype for Business environment](/skypeforbusiness/hybrid/decommission-on-prem-overview). 
+ > All user's phone attributes must be managed online before you [decommission your on-premises Skype for Business environment](/skypeforbusiness/hybrid/decommission-on-prem-overview). 
 
 ## Configure the phone number and enable enterprise voice 
 
-After you've created the user and assigned a license, you must configure the user's online phone settings. The configuration of Cloud Voicemail for the user is automatic; no other configuration needs to be done.
+After you create the user and assign a license, you must configure the user's online phone settings. The configuration of Cloud Voicemail for the user is automatic and no other configuration needs to be done.
 
 ### Upload Direct Routing numbers to your tenant
 
 Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory supports future number management enhancements.
 
-For example, if you upload your numbers, they are viewable as acquired phone numbers when using the PowerShell command [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment), and also viewable in Teams admin center > Phone Numbers.
+For example, if you upload your numbers, they're viewable as acquired phone numbers when using the PowerShell command [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment), and also viewable in the Teams admin center under **Phone Numbers**.
 
-Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory is optional. If you don't upload the phone numbers, you can still assign numbers to users. Assigning a number to a user automatically uploads the number to Microsoft's telephone number maangement inventory if it's not already there.
+Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory is optional. If you don't upload the phone numbers, you can still assign numbers to users. Assigning a number to a user automatically uploads the number to Microsoft's telephone number management inventory if it's not already there.
 
-To upload Direct Routing telephone numbers to Microsoft's telephone number management inventory, see the following PowerShell command: [New-CsOnlineDirectRoutingTelephoneNumberUploadOrder](/powershell/module/teams/new-csonlinedirectroutingtelephonenumberuploadorder).
+To upload Direct Routing telephone numbers to Microsoft's telephone number management inventory, use the [New-CsOnlineDirectRoutingTelephoneNumberUploadOrder](/powershell/module/teams/new-csonlinedirectroutingtelephonenumberuploadorder) cmdlet.
 
-Uploading the numbers is an asynchronous operation. To see the status of your upload order, see the following PowerShell command: [Get-CsOnlineTelephoneNumberOrder](/powershell/module/teams/get-csonlinetelephonenumberorder).
+Uploading the numbers is an asynchronous operation. To see the status of your upload order, use the [Get-CsOnlineTelephoneNumberOrder](/powershell/module/teams/get-csonlinetelephonenumberorder) PowerShell cmdlet.
 
 > [!NOTE]
-> Whenever porting Direct Routing numbers to other Teams PSTN connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and prior to your number port event, use the PowerShell command [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the DR numbers available for porting. A release order can also be used if you do not want to keep acquired Direct Routing numbers in Microsoft's inventory.
+> Whenever porting Direct Routing numbers to other Teams Public Switched Telephone Network (PSTN) connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and before your number port event, use the PowerShell cmdlet [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the Direct Routing numbers available for porting. A release order can also be used if you don't want to keep acquired Direct Routing numbers in Microsoft's inventory.
 
 You can configure the phone number by using the Teams admin center or by using Teams PowerShell.
 
 ### Use Teams admin center
 
-1. Go to **Users** -> **Manage users**.
+1. Go to **Users** > **Manage users**.
 
 2. Select a user.
 
-2. Under **Account** **General information**, select **Edit**.
+2. Under **Account** > **General information**, select **Edit**.
 
 3. Under **Assign phone number**, from the **Phone number type** drop-down menu, select **Direct Routing**.
 
@@ -117,7 +118,7 @@ You can configure the phone number by using the Teams admin center or by using T
 
 5. Select **Apply.**
 
-The account general information will now show the assigned phone number and Direct Routing as the phone number type.
+The account general information now shows the assigned phone number and displays Direct Routing as the phone number type.
 
 ### Use PowerShell
 
@@ -137,19 +138,19 @@ The account general information will now show the assigned phone number and Dire
        Set-CsPhoneNumberAssignment -Identity "<User name>" -PhoneNumber <phone number> -PhoneNumberType DirectRouting
        ```
     
-       For example, to add a phone number for user "Spencer Low," enter the following: 
+       For example, to add a phone number for user "Spencer Low," enter the following command: 
 
        ```PowerShell
        Set-CsPhoneNumberAssignment -Identity "spencer.low@contoso.com" -PhoneNumber "+14255388797" -PhoneNumberType DirectRouting
        ```
-       If the users "Spencer Low" and "Stacy Quinn" share the same base number with unique extensions, enter the following
+       If the users "Spencer Low" and "Stacy Quinn" share the same base number with unique extensions, enter the following command:
     
        ```PowerShell
        Set-CsPhoneNumberAssignment -Identity "spencer.low@contoso.com" -PhoneNumber "+14255388701;ext=1001" -PhoneNumberType DirectRouting
        Set-CsPhoneNumberAssignment -Identity "stacy.quinn@contoso.com" -PhoneNumber "+14255388701;ext=1002" -PhoneNumberType DirectRouting
        ```
 
-    Microsoft recommends, but doesn't require, that the phone number is configured as a full E.164 phone number with country code. You can configure phone numbers with extensions. These extensions will be used to look up users when the lookup against the base number returns more than one result. This functionality allows companies to configure phone numbers with the same base number and unique extensions. For lookup to be successful, the invite must include the full number with extension as follows:
+    Microsoft recommends, but doesn't require, that the phone number is configured as a full E.164 phone number with country code. You can configure phone numbers with extensions. These extensions are used to look up users when the lookup against the base number returns more than one result. This functionality allows companies to configure phone numbers with the same base number and unique extensions. For lookup to be successful, the invite must include the full number with extension as follows:
     
     ```PowerShell
     Invite: <sip:+14255388701;ext=1001@sbc1.adatum.biz
@@ -157,13 +158,13 @@ The account general information will now show the assigned phone number and Dire
 
 ## Configure sending calls directly to voicemail
 
-Direct Routing allows you to end the call to a user and send it directly to the user's voicemail. If you want to send the call directly to voicemail, attach opaque=app:voicemail to the Request URI header. For example, "sip:user@yourdomain.com;opaque=app:voicemail". The Teams user won't receive the calling notification. Instead, The call will be connected to the voicemail of the user directly.
+Direct Routing allows you to end the call to a user and send it directly to a user's voicemail. If you want to send a call directly to voicemail, attach `opaque=app:voicemail` to the Request URI header (for example, `sip:user@yourdomain.com;opaque=app:voicemail`). The Teams user doesn't receive the calling notification. Instead, the call directly connects to the voicemail of the user.
 
 ## Assign Teams Only mode to users to ensure calls land in Microsoft Teams
 
 Direct Routing requires that users be in Teams Only mode to ensure incoming calls land in the Teams client. To put users in Teams Only mode, assign them the "UpgradeToTeams" instance of TeamsUpgradePolicy. For more information, see [Upgrade strategies for IT administrators](upgrade-to-teams-on-prem-implement.md). If your organization uses Skype for Business Server, see the following article for information about interoperability between Skype and Teams: [Migration and interoperability with Skype for Business](migration-interop-guidance-for-teams-with-skype.md).
 
-## See also
+## Related articles
 
 [Plan Direct Routing](direct-routing-plan.md)
 
