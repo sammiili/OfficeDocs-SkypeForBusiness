@@ -99,7 +99,7 @@ To upload Direct Routing telephone numbers to Microsoft's telephone number manag
 Uploading the numbers is an asynchronous operation. To see the status of your upload order, see the following PowerShell command: [Get-CsOnlineTelephoneNumberOrder](/powershell/module/teams/get-csonlinetelephonenumberorder).
 
 > [!NOTE]
-> Whenever porting Direct Routing numbers to other Teams PSTN connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and prior to your number port event, use the PowerShell command [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the DR numbers available for porting.
+> Whenever porting Direct Routing numbers to other Teams PSTN connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and prior to your number port event, use the PowerShell command [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the DR numbers available for porting. A release order can also be used if you do not want to keep acquired Direct Routing numbers in Microsoft's inventory.
 
 You can configure the phone number by using the Teams admin center or by using Teams PowerShell.
 
