@@ -93,7 +93,7 @@ Uploading your Direct Routing phone numbers to Microsoft's telephone number mana
 
 To upload Direct Routing telephone numbers to Microsoft's telephone number management inventory, use the [New-CsOnlineDirectRoutingTelephoneNumberUploadOrder](/powershell/module/teams/new-csonlinedirectroutingtelephonenumberuploadorder) cmdlet.
 
-Uploading the numbers is an asynchronous operation. To see the status of your upload order, use the [Get-CsOnlineTelephoneNumberOrder](/powershell/module/teams/get-csonlinetelephonenumberorder) PowerShell cmdlet with *-OrderType DirectRoutingNumberCreation -OrderId <orderId>*.
+Uploading the numbers is an asynchronous operation. To see the status of your upload order, use the [Get-CsOnlineTelephoneNumberOrder](/powershell/module/teams/get-csonlinetelephonenumberorder) PowerShell cmdlet with -OrderType **DirectRoutingNumberCreation** -OrderId ***orderId***.
 
 > [!NOTE]
 > Whenever porting Direct Routing numbers to other Teams Public Switched Telephone Network (PSTN) connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and before your number port event, use the PowerShell cmdlet [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the Direct Routing numbers available for porting. A release order can also be used if you don't want to keep acquired Direct Routing numbers in Microsoft's inventory.
