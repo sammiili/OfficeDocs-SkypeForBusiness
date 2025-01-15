@@ -83,15 +83,11 @@ Direct Routing requires the user to be homed online. You can check by looking at
  > [!NOTE]
  > All user's phone attributes must be managed online before you [decommission your on-premises Skype for Business environment](/skypeforbusiness/hybrid/decommission-on-prem-overview). 
 
-## Configure the phone number and enable enterprise voice 
-
-After you create the user and assign a license, you must configure the user's online phone settings. The configuration of Cloud Voicemail for the user is automatic and no other configuration needs to be done.
-
-### Upload Direct Routing numbers to your tenant
+## Upload Direct Routing numbers to your tenant
 
 Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory supports future number management enhancements.
 
-For example, if you upload your numbers they are viewable when using the PowerShell commands [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) and [Export-CsAcquiredPhoneNumber](/powershell/module/teams/export-csacquiredphonenumber), and also viewable in the Teams admin center under **Phone Numbers**.
+For example, if you upload your numbers, you can view them by using the PowerShell cmdlets [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) and [Export-CsAcquiredPhoneNumber](/powershell/module/teams/export-csacquiredphonenumber) or in the Teams admin center under **Phone Numbers**.
 
 Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory is optional. If you don't upload the phone numbers, you can still assign numbers to users. Assigning a number to a user automatically uploads the number to Microsoft's telephone number management inventory if it's not already there.
 
@@ -101,6 +97,10 @@ Uploading the numbers is an asynchronous operation. To see the status of your up
 
 > [!NOTE]
 > Whenever porting Direct Routing numbers to other Teams Public Switched Telephone Network (PSTN) connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and before your number port event, use the PowerShell cmdlet [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the Direct Routing numbers available for porting. A release order can also be used if you don't want to keep acquired Direct Routing numbers in Microsoft's inventory.
+
+## Configure the phone number and enable enterprise voice 
+
+After you create the user and assign a license, you must configure the user's online phone settings. The configuration of Cloud Voicemail for the user is automatic and no other configuration needs to be done.
 
 You can configure the phone number by using the Teams admin center or by using Teams PowerShell.
 
@@ -118,7 +118,7 @@ You can configure the phone number by using the Teams admin center or by using T
 
 5. Select **Apply.**
 
-The account general information now shows the assigned phone number and displays Direct Routing as the phone number type.
+The account's general information now shows the assigned phone number and displays Direct Routing as the phone number type.
 
 ### Use PowerShell
 
