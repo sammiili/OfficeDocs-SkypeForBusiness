@@ -37,7 +37,7 @@ When you're ready to enable users for Direct Routing, follow these steps:
 
 1. [Create a user in Microsoft 365 and assign a Teams Phone license](#create-a-user-and-assign-the-license)
 1. [Ensure that the user is homed online](#ensure-that-the-user-is-homed-online)
-1. [Configure the phone number and enable enterprise voice](#configure-the-phone-number-and-enable-enterprise voice)
+1. [Configure the phone number and enable enterprise voice](#configure-the-phone-number-and-enable-enterprise-voice)
 1. [Configure sending calls directly to voicemail](#configure-sending-calls-directly-to-voicemail)
 1. [Assign Teams Only mode to users](#assign-teams-only-mode-to-users-to-ensure-calls-land-in-microsoft-teams)
 
