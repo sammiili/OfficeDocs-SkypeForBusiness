@@ -91,7 +91,7 @@ After you create the user and assign a license, you must configure the user's on
 
 Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory supports future number management enhancements.
 
-For example, if you upload your numbers, they are viewable when using the PowerShell commands [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) and [Export-CsAcquiredPhoneNumber](powershell/module/teams/export-csacquiredphonenumber), and also viewable in the Teams admin center under **Phone Numbers**.
+For example, if you upload your numbers they are viewable when using the PowerShell commands [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) and [Export-CsAcquiredPhoneNumber](powershell/module/teams/export-csacquiredphonenumber), and also viewable in the Teams admin center under **Phone Numbers**.
 
 Uploading your Direct Routing phone numbers to Microsoft's telephone number management inventory is optional. If you don't upload the phone numbers, you can still assign numbers to users. Assigning a number to a user automatically uploads the number to Microsoft's telephone number management inventory if it's not already there.
 
