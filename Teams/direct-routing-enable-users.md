@@ -25,7 +25,7 @@ description: "Learn how to enable users for Microsoft Teams Phone Direct Routing
 
 This article describes how to enable users for Direct Routing and is step 2 of the following steps for configuring Direct Routing:
 
-- Step 1. [Connect the SBC with Phone System and validate the connection](direct-routing-connect-the-sbc.md) 
+- Step 1. [Connect the Session Border Controller (SBC) with Phone System and validate the connection](direct-routing-connect-the-sbc.md) 
 - **Step 2. Enable users for Direct Routing**   (this article)
 - Step 3. [Configure voice routing](direct-routing-voice-routing.md)
 - Step 4. [Translate numbers to an alternate format](direct-routing-translate-numbers.md) 
@@ -58,12 +58,12 @@ Direct Routing requires the user to be homed online. You can check by looking at
 
 1. Connect a Microsoft Teams PowerShell session.
 
-2. Issue the command: 
+2. Issue the command:
 
     ```PowerShell
     Get-CsOnlineUser -Identity "<User name>" | fl RegistrarPool,OnPremLineUri,LineUri
     ``` 
-    If OnPremLineUri is populated with a <E.164 phone number>, the phone number was assigned on-premises and synchronized to Microsoft 365. If you want to manage the phone number online, clear the parameter using on-premises Skype for Business Management Shell and synchronize to Microsoft 365 before configuring the phone number using Teams PowerShell. 
+    If OnPremLineUri is populated with a <E.164 phone number>, the phone number was assigned on-premises and synchronized to Microsoft 365. If you want to manage the phone number online, clear the parameter using on-premises Skype for Business Management Shell and synchronize to Microsoft 365 before configuring the phone number using Teams PowerShell.
 
 1. From Skype for Business Management Shell, issue the command: 
 
@@ -71,7 +71,7 @@ Direct Routing requires the user to be homed online. You can check by looking at
    Set-CsUser -Identity "<User name>" -LineUri $null
     ``` 
  > [!NOTE]
- > Don't set EnterpriseVoiceEnabled to False as there's no requirement to do so and this can lead to dial plan normalization issues if legacy Skype for Business phones are in use and the Tenant hybrid configuration is set with UseOnPremDialPlan $True. 
+ > Don't set EnterpriseVoiceEnabled to False as there's no requirement to do so. Setting EnterpriseVoiceEnabled to False can lead to dial plan normalization issues if legacy Skype for Business phones are in use and the Tenant hybrid configuration is set with UseOnPremDialPlan $True.
     
    After the changes sync to Microsoft 365, the expected output of `Get-CsOnlineUser -Identity "<User name>" | fl RegistrarPool,OnPremLineUri,LineUri` is:
 
@@ -100,7 +100,7 @@ Uploading the numbers is an asynchronous operation. To see the status of your up
 ```
 
 > [!NOTE]
-> Whenever porting Direct Routing numbers to other Teams Public Switched Telephone Network (PSTN) connectivity options, in addition to unassigning the numbers from the users, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and before your number port event, use the PowerShell cmdlet [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the Direct Routing numbers available for porting. A release order can also be used if you don't want to keep acquired Direct Routing numbers in Microsoft's inventory.
+> Whenever porting Direct Routing numbers to Teams using another PSTN connectivity option, the numbers must be released from Microsoft's telephone number management inventory. After unassigning the numbers from the users and before your number port event, use the PowerShell cmdlet [New-CsOnlineTelephoneNumberReleaseOrder](/powershell/module/teams/new-csonlinetelephonenumberreleaseorder) to make the Direct Routing numbers available for porting. A release order can also be used if you don't want to keep your acquired Direct Routing numbers in Microsoft's inventory.
 
 ## Configure the phone number and enable enterprise voice 
 
@@ -126,7 +126,7 @@ The account's general information now shows the assigned phone number and displa
 
 ### Use PowerShell
 
-1. Connect to a Microsoft Teams PowerShell session. 
+1. Connect to a Microsoft Teams PowerShell session.
 
 2. The next steps depend on whether you're managing the user's phone number on-premises or online. If you're managing the phone number on-premises, you must use the on-premises Skype for Business Management Shell, Control Panel, or one of the methods explained in [Decide how to manage attributes after decommissioning](/skypeforbusiness/hybrid/cloud-consolidation-managing-attributes).
 
