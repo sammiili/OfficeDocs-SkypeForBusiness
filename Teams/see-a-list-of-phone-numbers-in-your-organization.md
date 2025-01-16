@@ -43,8 +43,7 @@ To see the telephone numbers in your organization:
 
 2. In the left navigation, go to **Voice** > **Phone numbers**.
 
-   > [!IMPORTANT]
-   > For you to see the **Voice** option in the left navigation in the Microsoft Teams admin center, you must first buy at least one **Enterprise E5 license**, one **Teams Phone** add-on license, or one **Audio Conferencing** add-on license.
+   - For you to see the **Voice** option in the left navigation in the Microsoft Teams admin center, you must first buy at least one **Enterprise E5 license**, one **Teams Phone** add-on license, or one **Audio Conferencing** add-on license.
 
 3. To view the assignment status of a number, see the **Assignment Status** column, which also shows what type of service the number is assigned to. You can click the filter icon to filter by:
 
@@ -87,8 +86,7 @@ To see a list of all telephone numbers that you have for your organization, use 
 Get-CsPhoneNumberAssignment | ft TelephoneNumber,ActivationState,NumberType
 ```
 
-> [!IMPORTANT]
-> By default, the [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) cmdlet returns the first 500 results.
+By default, the [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) cmdlet returns the first 500 results.
 
 Another way of getting all telephone numbers that you have for your organization is to use the [Export-CsAcquiredPhoneNumber](/powershell/module/teams/export-csacquiredphonenumber) PowerShell cmdlet.
 
