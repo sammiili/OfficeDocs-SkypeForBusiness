@@ -57,6 +57,11 @@ For example, if a call comes in to an unavailable Direct Routing user through a 
 
 The delivery of a voicemail to an Exchange mailbox is done using Simple Mail Transport Protocol (SMTP) like any other e-mail.
 
+> [!IMPORTANT]
+> E-mail is sent from: `noreply@skype.voicemail.microsoft.com`
+> 
+> Do not setup rules that block this address otherwise voicemails won't be received by users.
+
 ## Manage Cloud Voicemail for users
 
 You can manage Cloud Voicemail for users by specifying voicemail policies and configuring voicemail settings.  
