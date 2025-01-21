@@ -3,8 +3,8 @@ title: "See a list of telephone numbers in your organization"
 ms.author: scottfrancis
 author: sfrancis206
 manager: pamgreen
-ms.reviewer: davlick, roykuntz, jastark
-ms.date: 10/09/2023
+ms.reviewer: davlick, roykuntz, jastark, pavellatif
+ms.date: 01/21/2025
 ms.topic: article
 ms.assetid: 93098bc5-df63-4a1f-8734-0b72a6280a69
 ms.tgt.pltfrm: cloud
@@ -86,7 +86,7 @@ To see a list of all telephone numbers that you have for your organization, use 
 Get-CsPhoneNumberAssignment | ft TelephoneNumber,ActivationState,NumberType
 ```
 
-By default, the [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) cmdlet returns the first 500 results.
+By default, the [Get-CsPhoneNumberAssignment](/powershell/module/teams/get-csphonenumberassignment) cmdlet returns the first 500 results. Use the "-skip" and "-top" parameters to customize your output.
 
 Another way to get a list of all telephone numbers in your organization is to use the [Export-CsAcquiredPhoneNumber](/powershell/module/teams/export-csacquiredphonenumber) PowerShell cmdlet.
 

@@ -1,7 +1,7 @@
 ---
 title: "Enable users for Direct Routing"
 ms.reviewer: filippse
-ms.date: 08/15/2023
+ms.date: 01/21/2025
 ms.author: scottfrancis
 author: sfrancis206
 manager: pamgreen
