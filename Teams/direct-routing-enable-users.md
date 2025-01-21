@@ -70,7 +70,7 @@ Direct Routing requires the user to be homed online. You can check by looking at
    Set-CsUser -Identity "<User name>" -LineUri $null
     ``` 
  > [!NOTE]
- > Don't set EnterpriseVoiceEnabled to False as there's no requirement to do so. Setting EnterpriseVoiceEnabled to False can lead to dial plan normalization issues if legacy Skype for Business phones are in use and the Tenant hybrid configuration is set with UseOnPremDialPlan $True.
+ > Don't set `EnterpriseVoiceEnabled` to False as there's no requirement to do so. Setting `EnterpriseVoiceEnabled` to False can lead to dial plan normalization issues if legacy Skype for Business phones are in use and the Tenant hybrid configuration is set with UseOnPremDialPlan $True.
     
    After the changes sync to Microsoft 365, the expected output of `Get-CsOnlineUser -Identity "<User name>" | fl RegistrarPool,OnPremLineUri,LineUri` is:
 
