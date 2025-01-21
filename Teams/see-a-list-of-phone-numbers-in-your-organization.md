@@ -35,7 +35,7 @@ In Teams, the numbers that you associate with your tenant are stored in Microsof
 
 You can see telephone numbers acquired through any of the Public Switched Telephone Network [(PSTN) connectivity options](pstn-connectivity.md) that connected to your tenant. The numbers you can see include numbers assigned to users and unassigned numbers that are reserved for use in your tenant.
 
-To have your unassigned Direct Routing telephone numbers included in this view, you must upload them to Microsoft's telephone number management inventory. For more information, See [Upload Direct Routing numbers to your tenant](direct-routing-enable-users.md#upload-direct-routing-numbers-to-your-tenant).
+To have your unassigned Direct Routing telephone numbers included in this view, you must upload them to Microsoft's telephone number management inventory. For more information, see [Upload Direct Routing numbers to your tenant](direct-routing-enable-users.md#upload-direct-routing-numbers-to-your-tenant).
 
 To see the telephone numbers in your organization:
 
