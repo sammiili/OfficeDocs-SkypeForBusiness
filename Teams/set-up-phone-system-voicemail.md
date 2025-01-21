@@ -60,7 +60,7 @@ The delivery of a voicemail to an Exchange mailbox is done using Simple Mail Tra
 > [!IMPORTANT]
 > E-mail is sent from: `noreply@skype.voicemail.microsoft.com`
 > 
-> Do not setup rules that block this address otherwise voicemails won't be received by users.
+> Don't set up rules that block this address, otherwise users won't receive voicemails.
 
 ## Manage Cloud Voicemail for users
 
