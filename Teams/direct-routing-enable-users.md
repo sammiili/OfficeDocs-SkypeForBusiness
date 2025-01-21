@@ -23,23 +23,22 @@ description: "Learn how to enable users for Microsoft Teams Phone Direct Routing
 
 # Enable users for Direct Routing
 
-This article describes how to enable users for Direct Routing and is step 2 of the following steps for configuring Direct Routing:
+This article describes how to enable users for Direct Routing and represents step 2 in the following steps for configuring Direct Routing:
 
-- Step 1. [Connect the Session Border Controller (SBC) with Phone System and validate the connection](direct-routing-connect-the-sbc.md) 
-- **Step 2. Enable users for Direct Routing**   (this article)
-- Step 3. [Configure voice routing](direct-routing-voice-routing.md)
-- Step 4. [Translate numbers to an alternate format](direct-routing-translate-numbers.md) 
-
+- Step 1. [Connect the Session Border Controller (SBC) with Phone System and validate the connection](direct-routing-connect-the-sbc.md) .
+- **Step 2. Enable users for Direct Routing** (this article).
+- Step 3. [Configure voice routing](direct-routing-voice-routing.md).
+- Step 4. [Translate numbers to an alternate format](direct-routing-translate-numbers.md). 
 
 For information on all the steps required for setting up Direct Routing, see [Configure Direct Routing](direct-routing-configure.md).
 
 When you're ready to enable users for Direct Routing, follow these steps: 
 
-1. [Create a user in Microsoft 365 and assign a Teams Phone license](#create-a-user-and-assign-the-license)
-1. [Ensure that the user is homed online](#ensure-that-the-user-is-homed-online)
-1. [Configure the phone number and enable enterprise voice](#configure-the-phone-number-and-enable-enterprise-voice)
-1. [Configure sending calls directly to voicemail](#configure-sending-calls-directly-to-voicemail)
-1. [Assign Teams Only mode to users](#assign-teams-only-mode-to-users-to-ensure-calls-land-in-microsoft-teams)
+1. [Create a user in Microsoft 365 and assign a Teams Phone license](#create-a-user-and-assign-the-license).
+1. [Ensure that the user is homed online](#ensure-that-the-user-is-homed-online).
+1. [Configure the phone number and enable enterprise voice](#configure-the-phone-number-and-enable-enterprise-voice).
+1. [Configure sending calls directly to voicemail](#configure-sending-calls-directly-to-voicemail).
+1. [Assign Teams Only mode to users](#assign-teams-only-mode-to-users-to-ensure-calls-land-in-microsoft-teams).
 
 ## Create a user and assign the license
 
@@ -54,7 +53,7 @@ For information about license requirements, see [licensing and other requirement
 
 This step applies to Skype for Business Server Enterprise Voice enabled users being migrated to Teams Direct Routing.
 
-Direct Routing requires the user to be homed online. You can check by looking at the RegistrarPool parameter, which needs to have a value in the infra.lync.com domain. Microsoft recommends, but doesn't require, that you change the LineURI from on-premises to online when migrating users to Teams Direct Routing. 
+Direct Routing requires the user to be homed online. You can check by looking at the `RegistrarPool` parameter, which needs to have a value in the infra.lync.com domain. Microsoft recommends, but doesn't require, that you change the LineURI from on-premises to online when migrating users to Teams Direct Routing. 
 
 1. Connect a Microsoft Teams PowerShell session.
 
@@ -63,7 +62,7 @@ Direct Routing requires the user to be homed online. You can check by looking at
     ```PowerShell
     Get-CsOnlineUser -Identity "<User name>" | fl RegistrarPool,OnPremLineUri,LineUri
     ``` 
-    If OnPremLineUri is populated with a <E.164 phone number>, the phone number was assigned on-premises and synchronized to Microsoft 365. If you want to manage the phone number online, clear the parameter using on-premises Skype for Business Management Shell and synchronize to Microsoft 365 before configuring the phone number using Teams PowerShell.
+    If `OnPremLineUri` is populated with a <E.164 phone number>, the phone number was assigned on-premises and synchronized to Microsoft 365. If you want to manage the phone number online, clear the parameter using on-premises Skype for Business Management Shell and synchronize to Microsoft 365 before configuring the phone number using Teams PowerShell.
 
 1. From Skype for Business Management Shell, issue the command: 
 
@@ -120,9 +119,9 @@ You can configure the phone number by using the Teams admin center or by using T
 
 4. Enter an assigned phone number and a phone number extension if applicable.
 
-5. Select **Apply.**
+5. Select **Apply**.
 
-The account's general information now shows the assigned phone number and displays Direct Routing as the phone number type.
+   The account's general information now shows the assigned phone number and displays Direct Routing as the phone number type.
 
 ### Use PowerShell
 
